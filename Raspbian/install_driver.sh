@@ -18,7 +18,6 @@ case $USER_INPUT in
     VERSION="5.4.83-v7l+"
     echo "Manually installing version $VERSION"
 ;;
-sudo cp ./usr/$VERSION/uctronics-hslcd35-overlay.dtb /boot/overlays/uctronics-hslcd35.dtbo
 
 echo "Change display resolution..."
 sudo sed 's/hdmi_force_hotplug=1//g' -i /boot/config.txt
