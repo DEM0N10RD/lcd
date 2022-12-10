@@ -3,11 +3,11 @@ echo "Enable spi bus..."
 sudo sed 's/dtparam=spi=on//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a dtparam=spi=on' -i /boot/config.txt
+
 echo "Enable uctronics-hslcd35 driver..."
 sudo sed 's/dtoverlay=uctronics-hslcd35//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a dtoverlay=uctronics-hslcd35' -i /boot/config.txt
-sudo cp ./usr/$(uname -r)/uctronics-hslcd35-overlay.dtb /boot/overlays/uctronics-hslcd35.dtbo
 
 # Give the user a choice to force an older install on a newer kernel version
 VERSION=$(uname -r)
@@ -24,18 +24,23 @@ echo "Change display resolution..."
 sudo sed 's/hdmi_force_hotplug=1//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a hdmi_force_hotplug=1' -i /boot/config.txt
+
 sudo sed 's/hdmi_group=2//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a hdmi_group=2' -i /boot/config.txt
+
 sudo sed 's/hdmi_mode=87//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a hdmi_mode=87' -i /boot/config.txt
+
 sudo sed 's/hdmi_cvt 480 320 60 6 0 0 0//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a hdmi_cvt 480 320 60 6 0 0 0' -i /boot/config.txt
+
 sudo sed 's/hdmi_driver=2//g' -i /boot/config.txt
 sudo sed '/^$/d' -i /boot/config.txt
 sudo sed '$a hdmi_driver=2' -i /boot/config.txt
+
 echo "Install FBCP..."
 sudo apt-get install cmake
 sudo mkdir ./rpi-fbcp/build
@@ -56,3 +61,4 @@ case $USER_INPUT in
     echo "cancel"
 ;;
 esac
+
